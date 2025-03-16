@@ -1,2 +1,43 @@
-target/
+# Rustプロジェクト用の.gitignoreファイル
+# コンパイル時に生成されるファイル
+/target/
+**/*.rs.bk
+*.pdb
+
+# デバッグ情報
+*.pdb
+
+# 依存関係のロックファイル（プロジェクトによって含める場合と除外する場合がある）
+# ライブラリの場合は通常コミットしない、バイナリの場合はコミットする
+Cargo.lock
+
+# rustfmtやrustdocなどのツールが生成する一時ファイル
+**/*.rs.fmt
+
+# IDEやエディタの設定ファイル
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# ローカル設定ファイル
+.env
+.env.local
+*.local
+
+# ビルドスクリプトの出力
+build/
+out/
+
+# ドキュメント生成
+doc/
+docs/
+
+# プロファイリングやベンチマーク結果
+perf.data
+perf.data.old
+flamegraph.svg
+
+# カスタム除外
 changes.txt
