@@ -15,7 +15,7 @@ Cargo.tomlに以下を追加してください：
 
 ```toml
 [dependencies]
-cetus-aggregator-rust = { git = "https://github.com/yourusername/cetus-aggregator-rust" }
+cetus-aggregator-rust = { git = "https://github.com/bu-bu-BUTASAN/cetus-aggregator-rust" }
 ```
 
 ## 使用例
