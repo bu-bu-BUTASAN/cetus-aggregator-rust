@@ -3,7 +3,7 @@
  *
  * このモジュールはAPIとの通信に使用するデータ構造を定義します。
  */
-use num_bigint::BigUint;
+use primitive_types::U256;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
@@ -15,8 +15,8 @@ pub struct FindRouterParams {
     /// 交換先コインのアドレス
     pub target: String,
     /// 交換する金額
-    #[serde(serialize_with = "serialize_biguint")]
-    pub amount: BigUint,
+    #[serde(serialize_with = "serialize_u256")]
+    pub amount: U256,
     /// 入力量ベースで計算するかどうか
     #[serde(rename = "by_amount_in")]
     pub by_amount_in: bool,
@@ -40,8 +40,8 @@ pub struct FindRouterParams {
     pub liquidity_changes: Option<Vec<PreSwapLpChangeParams>>,
 }
 
-/// BigUintをシリアライズするためのヘルパー関数
-fn serialize_biguint<S>(value: &BigUint, serializer: S) -> Result<S::Ok, S::Error>
+/// U256をシリアライズするためのヘルパー関数
+fn serialize_u256<S>(value: &U256, serializer: S) -> Result<S::Ok, S::Error>
 where
     S: serde::Serializer,
 {
@@ -53,7 +53,7 @@ impl Default for FindRouterParams {
         Self {
             from: String::new(),
             target: String::new(),
-            amount: BigUint::from(0u32),
+            amount: U256::zero(),
             by_amount_in: true,
             depth: None,
             split_algorithm: None,
