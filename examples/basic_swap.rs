@@ -4,8 +4,7 @@
  * このサンプルは、SUIからCETUSへの交換ルートを検索する方法を示しています。
  */
 use cetus_aggregator_rust::{AggregatorClient, AggregatorClientTrait, FindRouterParams};
-use num_bigint::BigUint;
-use std::str::FromStr;
+use primitive_types::U256;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -24,7 +23,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         from: "0x2::sui::SUI".to_string(),
         target: "0x06864a6f921804860930db6ddbe2e16acdf8504495ea7481637a1c8b9a8fe54b::cetus::CETUS"
             .to_string(),
-        amount: BigUint::from_str("1_000_000_000").unwrap(), // 1 SUI
+        amount: U256::from(1000000000u64), // 1 SUI
         by_amount_in: true,
         depth: Some(3),       // 最大スワップ回数(3回まで)
         split_count: Some(1), // 最大分割数(3ルートまで)
